@@ -1,0 +1,58 @@
+{
+  "name": "@podium/browser",
+  "version": "0.0.0",
+  "main": "lib/client.js",
+  "license": "MIT",
+  "keywords": [
+    "micro services",
+    "micro frontend",
+    "components",
+    "podium",
+    "http"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:podium-lib/browser.git"
+  },
+  "bugs": {
+    "url": "https://github.com/podium-lib/issues"
+  },
+  "homepage": "https://podium-lib.io/",
+  "files": [
+    "lib",
+    "index.d.ts"
+  ],
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "tap test/*.js",
+    "test:coverage": "tap test/*.js --cov",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "lint:format": "eslint --fix .",
+    "precommit": "lint-staged"
+  },
+  "dependencies": {
+    "eventemitter3": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.5.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "esm": "^3.2.25",
+    "lint-staged": "^9.4.2",
+    "prettier": "^1.18.2",
+    "tap": "^14.9.1"
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix --config ./.eslintrc",
+      "git add"
+    ],
+    "{*.json,*.md,.eslintrc,.prettierrc}": [
+      "prettier --write",
+      "git add"
+    ]
+  }
+}
