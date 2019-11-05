@@ -1,8 +1,5 @@
-// FIXME: Get Tap working with es moudles without rewiring `require`
-// eslint-disable-next-line no-global-assign
-require = require('esm')(module);
-const tap = require('tap');
-const MessageBus = require('../lib/MessageBus').default;
+import tap from 'tap';
+import MessageBus from '../lib/MessageBus';
 
 let bus;
 
