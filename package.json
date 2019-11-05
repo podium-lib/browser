@@ -1,7 +1,7 @@
 {
   "name": "@podium/browser",
   "version": "0.0.0",
-  "main": "lib/client.js",
+  "main": "lib/client.mjs",
   "license": "MIT",
   "keywords": [
     "micro services",
@@ -24,8 +24,8 @@
   ],
   "types": "index.d.ts",
   "scripts": {
-    "test": "tap test/*.js",
-    "test:coverage": "tap test/*.js --cov",
+    "test": "tap test/*.mjs",
+    "test:coverage": "tap test/*.mjs --cov",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "lint:format": "eslint --fix .",
