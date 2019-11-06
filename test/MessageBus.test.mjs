@@ -26,3 +26,17 @@ tap.test('publish() - should invoke listener', t => {
     });
     bus.publish('foo', 'bar', payload);
 });
+
+tap.test('log() - should retrieve earlier events', t => {
+    const channel = 'foo';
+    const topic = 'foo';
+
+    const payload1 = 'payload1';
+    const payload2 = { a: 'b' };
+
+    const event1 = bus.publish(channel, topic, payload1);
+    const event2 = bus.publish(channel, topic, payload2);
+
+    t.same(bus.log(channel, topic), [event1, event2]);
+    t.end();
+});
