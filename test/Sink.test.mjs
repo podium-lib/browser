@@ -8,13 +8,13 @@ tap.beforeEach(end => {
     end();
 });
 
-tap.test('read() - should be a function', t => {
-    t.ok(typeof sink.read === 'function');
+tap.test('log() - should be a function', t => {
+    t.ok(typeof sink.log === 'function');
     t.end();
 });
 
-tap.test('read() - should initially return an empty array', t => {
-    t.same(sink.read('foo', 'bar'), []);
+tap.test('log() - should initially return an empty array', t => {
+    t.same(sink.log('foo', 'bar'), []);
     t.end();
 });
 
