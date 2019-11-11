@@ -87,6 +87,30 @@ messageBus.subscribe('channel', 'topic', event => {
 });
 ```
 
+#### .unsubscribe(channel, topic, callback)
+
+Unsubscribe to events for a channel and topic combination.
+
+This method takes the following arguments:
+
+| option   | default | type       | required | details                      |
+| -------- | ------- | ---------- | -------- | ---------------------------- |
+| channel  | `null`  | `string`   | `true`   | Name of the channel          |
+| topic    | `null`  | `string`   | `true`   | Name of the topic            |
+| callback | `null`  | `Function` | `true`   | Callback function to remove. |
+
+Example:
+
+```javascript
+function cb(event) {
+    console.log(event.payload);
+}
+
+messageBus.subscribe('channel', 'topic', cb);
+
+messageBus.unsubscribe('channel', 'topic', cb);
+```
+
 #### .peek(channel, topic)
 
 Get the latest event for a channel and topic combination.
