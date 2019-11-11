@@ -1,8 +1,9 @@
 {
   "name": "@podium/browser",
   "version": "0.0.0",
-  "main": "lib/client.mjs",
+  "main": "lib/index.js",
   "license": "MIT",
+  "type": "module",
   "keywords": [
     "micro services",
     "micro frontend",
@@ -24,8 +25,8 @@
   ],
   "types": "index.d.ts",
   "scripts": {
-    "test": "tap test/*.mjs",
-    "test:coverage": "tap test/*.mjs --cov",
+    "test": "tap test/*.js",
+    "test:coverage": "npm test -- --cov",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "lint:format": "eslint --fix .",
@@ -40,7 +41,6 @@
     "eslint-config-prettier": "^6.5.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.1",
-    "esm": "^3.2.25",
     "lint-staged": "^9.4.2",
     "prettier": "^1.19.1",
     "tap": "^14.9.2"
