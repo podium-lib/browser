@@ -30,8 +30,8 @@ tap.test('publish() - should invoke listener', t => {
     bus.publish('foo', 'bar', payload);
 });
 
-tap.test('peek() - should initially be empty', t => {
-    t.ok(bus.peek('channel', 'topic') == null);
+tap.test('peek() - should initially be undefined', t => {
+    t.ok(bus.peek('channel', 'topic') === undefined);
     t.end();
 });
 
