@@ -1,9 +1,11 @@
 # @podium/browser
 
-Cross podlet communication and message passing.
+Podium browser library.
 
 [![Dependencies](https://img.shields.io/david/podium-lib/browser.svg?style=flat-square)](https://david-dm.org/podium-lib/browser)
 [![Known Vulnerabilities](https://snyk.io/test/github/podium-lib/browser/badge.svg?targetFile=package.json&style=flat-square)](https://snyk.io/test/github/podium-lib/browser?targetFile=package.json)
+
+Currently this module only includes [MessageBus](#MessageBus), but it is possible that it will include more features in the future.
 
 ## Installation
 
@@ -11,7 +13,11 @@ Cross podlet communication and message passing.
 $ npm install @podium/browser
 ```
 
-## Simple usage
+## MessageBus
+
+Cross podlet communication and message passing.
+
+### Simple usage
 
 ```javascript
 // In podlet A. Broadcast an event
@@ -31,7 +37,7 @@ messageBus.subscribe('search', 'query', event => {
 });
 ```
 
-## Constructor
+### Constructor
 
 Create a new MessageBus instance.
 
@@ -39,9 +45,9 @@ Create a new MessageBus instance.
 const messageBus = new MessageBus();
 ```
 
-## API
+### API
 
-### .publish(channel, topic, payload)
+#### .publish(channel, topic, payload)
 
 Publish an event for a channel and topic combination. Returns the event object passed to subscribers.
 
@@ -61,7 +67,7 @@ messageBus.publish('search', 'query', 'laptop');
 messageBus.publish('auth', 'logout');
 ```
 
-### .subscribe(channel, topic, callback)
+#### .subscribe(channel, topic, callback)
 
 Subscribe to events for a channel and topic combination.
 
@@ -81,7 +87,7 @@ messageBus.subscribe('channel', 'topic', event => {
 });
 ```
 
-### .peek(channel, topic)
+#### .peek(channel, topic)
 
 Get the latest event for a channel and topic combination.
 
@@ -92,7 +98,7 @@ This method takes the following arguments:
 | channel | `null`  | `string` | `true`   | Name of the channel |
 | topic   | `null`  | `string` | `true`   | Name of the topic   |
 
-### .log(channel, topic)
+#### .log(channel, topic)
 
 Returns an array of the 10 latest events for a channel and topic combination.
 The array is ordered such that the the latest/newest events is at the front of the array.
@@ -113,6 +119,10 @@ events.forEach(event => {
     console.log(event.payload);
 });
 ```
+
+### Implementation
+
+MessageBus uses a global singleton to coordinate message passing between different instances. This is something you need to be aware of, for instance, if writing unit tests. See [MessageBus.test.mjs](test/MessageBus.test.mjs) for an example.
 
 ## License
 
