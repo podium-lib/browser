@@ -49,7 +49,7 @@ tap.test('unsubscribe() - should remove subscribed listener', t => {
 
     t.equal(cbCount, 2, 'Callback function should have been invoked twice');
 
-    // Try unsubscring and yet another publish
+    // Try unsubscribing and yet another publish
     bus.unsubscribe(channel, topic, callback);
     bus.publish(channel, topic);
 
