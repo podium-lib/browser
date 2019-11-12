@@ -15,6 +15,8 @@ export class MessageBus {
         callback: (event: Event) => void,
     ): void;
 
+    unsubscribe(channel: string, topic: string, callback: Function): void;
+
     peek(channel: string, topic: string): Event | void;
 
     log(channel: string, topic: string): Event[];
