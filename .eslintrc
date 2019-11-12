@@ -4,5 +4,9 @@
   "plugins": ["prettier"],
   "env": {
     "browser": true
+  },
+  "rules": {
+    "import/prefer-default-export": "off",
+    "import/extensions": ["error", {"js": "ignorePackages"}]
   }
 }

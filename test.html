@@ -1,0 +1,26 @@
+<script type="importmap">
+{
+  "imports": {
+    "eventemitter3": ["https://unpkg.com/@byungi/event-emitter/dist/index.esm.js"],
+    "@podium/browser": ["/lib/index.js"]
+  }
+}
+</script>
+<script type="module">
+// In podlet A. Subscribe to an event
+import { MessageBus } from '@podium/browser';
+
+const messageBus = new MessageBus();
+
+messageBus.subscribe('search', 'query', event => {
+    console.log(event.payload);
+});
+</script>
+<script type="module">
+// In podlet B. Publish to an event
+import { MessageBus } from '@podium/browser';
+
+const messageBus = new MessageBus();
+
+messageBus.publish('search', 'query', 'couch');
+</script>
