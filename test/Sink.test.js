@@ -1,5 +1,5 @@
 import tap from 'tap';
-import Sink from '../lib/Sink';
+import Sink from '../src/Sink';
 
 let sink;
 
