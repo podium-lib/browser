@@ -8,4 +8,5 @@ export default {
         format: 'esm',
     },
     plugins: [resolve(), commonjs()],
+    preserveModules: true,
 };
