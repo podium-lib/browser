@@ -1,7 +1,7 @@
 {
   "name": "@podium/browser",
   "version": "1.0.0-beta.0",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "type": "module",
   "keywords": [
@@ -20,16 +20,19 @@
   },
   "homepage": "https://podium-lib.io/",
   "files": [
-    "lib",
+    "dist",
     "index.d.ts"
   ],
   "types": "index.d.ts",
   "scripts": {
+    "prePublishOnly": "npm run build:clean && npm run build",
+    "build": "rollup --config",
+    "build:clean": "rimraf dist",
     "test": "tap test/*.js",
     "test:coverage": "npm test -- --cov",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
-    "lint:format": "eslint --fix .",
+    "lint": "eslint . --ignore-pattern '/dist/'",
+    "lint:fix": "eslint --fix . --ignore-pattern '/dist/'",
+    "lint:format": "eslint --fix . --ignore-pattern '/dist/'",
     "precommit": "lint-staged"
   },
   "dependencies": {
@@ -43,6 +46,10 @@
     "eslint-plugin-prettier": "^3.1.1",
     "lint-staged": "^9.4.3",
     "prettier": "^1.19.1",
+    "rimraf": "^3.0.0",
+    "rollup": "^1.27.2",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "tap": "^14.9.2"
   },
   "lint-staged": {
