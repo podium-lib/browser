@@ -4,7 +4,7 @@ import commonjs from 'rollup-plugin-commonjs';
 export default {
     input: 'src/index.js',
     output: {
-        file: 'dist/index.js',
+        dir: 'dist',
         format: 'esm',
     },
     plugins: [resolve(), commonjs()],
