@@ -39,18 +39,18 @@
     "eventemitter3": "^4.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-prettier": "^3.1.1",
-    "lint-staged": "^9.4.3",
-    "prettier": "^1.19.1",
-    "rimraf": "^3.0.0",
-    "rollup": "^1.27.2",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "tap": "^14.9.2"
+    "eslint": "6.7.2",
+    "eslint-config-airbnb-base": "14.0.0",
+    "eslint-config-prettier": "6.7.0",
+    "eslint-plugin-import": "2.18.2",
+    "eslint-plugin-prettier": "3.1.1",
+    "lint-staged": "9.5.0",
+    "prettier": "1.19.1",
+    "rimraf": "3.0.0",
+    "rollup": "1.27.8",
+    "rollup-plugin-commonjs": "10.1.0",
+    "rollup-plugin-node-resolve": "5.2.0",
+    "tap": "14.10.2"
   },
   "lint-staged": {
     "*.js": [
