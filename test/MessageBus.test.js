@@ -1,5 +1,5 @@
 import tap from 'tap';
-import MessageBus from '../src/MessageBus';
+import MessageBus from '../src/MessageBus.js';
 
 let bus;
 
