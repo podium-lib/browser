@@ -1,6 +1,6 @@
 import tap from 'tap';
-import Event from '../src/Event';
-import { toKey } from '../src/utils';
+import Event from '../src/Event.js';
+import { toKey } from '../src/utils.js';
 
 tap.test('toKey() - should return key format', t => {
     const channel = 'foo';

@@ -1,5 +1,5 @@
 import tap from 'tap';
-import { toKey } from '../src/utils';
+import { toKey } from '../src/utils.js';
 
 tap.test('toKey() - should return key format', t => {
     const channel = 'foo';

@@ -28,7 +28,7 @@
     "prepublishOnly": "npm run build:clean && npm run build",
     "build": "rollup --config",
     "build:clean": "rimraf dist",
-    "test": "tap test/*.js",
+    "test": "tap --no-esm test/*.js",
     "test:coverage": "npm test -- --cov",
     "lint": "eslint . --ignore-pattern '/dist/'",
     "lint:fix": "eslint --fix . --ignore-pattern '/dist/'",
