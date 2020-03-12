@@ -147,7 +147,7 @@ events.forEach(event => {
 
 ### Implementation
 
-MessageBus uses a global singleton to coordinate message passing between different instances. This is something you need to be aware of, for instance, if writing unit tests. See [MessageBus.test.mjs](test/MessageBus.test.mjs) for an example.
+MessageBus uses a global singleton to coordinate message passing between different instances. This is something you need to be aware of, for instance, if writing unit tests. See [MessageBus.test.js](test/MessageBus.test.js) for an example.
 
 ## License
 
