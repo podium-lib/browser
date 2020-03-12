@@ -2,8 +2,9 @@
 
 Podium browser library.
 
-[![Dependencies](https://img.shields.io/david/podium-lib/browser.svg?style=flat-square)](https://david-dm.org/podium-lib/browser)
-[![Known Vulnerabilities](https://snyk.io/test/github/podium-lib/browser/badge.svg?targetFile=package.json&style=flat-square)](https://snyk.io/test/github/podium-lib/browser?targetFile=package.json)
+[![Dependencies](https://img.shields.io/david/podium-lib/browser.svg)](https://david-dm.org/podium-lib/browser)
+[![GitHub Actions status](https://github.com/podium-lib/browser/workflows/Run%20Lint%20and%20Tests/badge.svg)](https://github.com/podium-lib/browser/actions?query=workflow%3A%22Run+Lint+and+Tests%22)
+[![Known Vulnerabilities](https://snyk.io/test/github/podium-lib/browser/badge.svg)](https://snyk.io/test/github/podium-lib/browser)
 
 Currently this module only includes [MessageBus](#MessageBus), but it is possible that it will include more features in the future.
 
