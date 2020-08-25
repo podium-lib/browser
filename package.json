@@ -39,7 +39,7 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "eventemitter3": "4.0.5"
+    "eventemitter3": "4.0.6"
   },
   "devDependencies": {
     "@babel/core": "7.11.1",
