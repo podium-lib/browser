@@ -45,7 +45,7 @@
     "@babel/core": "7.11.6",
     "@babel/preset-env": "7.11.5",
     "@rollup/plugin-babel": "5.0.4",
-    "@rollup/plugin-commonjs": "14.0.0",
+    "@rollup/plugin-commonjs": "15.1.0",
     "@rollup/plugin-node-resolve": "8.1.0",
     "eslint": "7.3.1",
     "eslint-config-airbnb-base": "14.2.0",
