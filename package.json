@@ -2,10 +2,10 @@
   "name": "@podium/browser",
   "version": "1.0.0",
   "type": "module",
-  "main": "dist/cjs/src/index.js",
+  "main": "./dist/cjs/src/index.js",
   "exports": {
-    "import": "dist/esm/src/index.js",
-    "require": "dist/cjs/src/index.js"
+    "import": "./dist/esm/src/index.js",
+    "require": "./dist/cjs/src/index.js"
   },
   "license": "MIT",
   "keywords": [
