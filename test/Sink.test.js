@@ -3,9 +3,8 @@ import Sink from '../src/Sink.js';
 
 let sink;
 
-tap.beforeEach(end => {
+tap.beforeEach(() => {
     sink = new Sink();
-    end();
 });
 
 tap.test('log() - should be a function', t => {

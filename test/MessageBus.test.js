@@ -3,12 +3,11 @@ import MessageBus from '../src/MessageBus.js';
 
 let bus;
 
-tap.beforeEach(end => {
+tap.beforeEach(() => {
     // Need to clear the global between tests for a clean slate
     // eslint-disable-next-line no-undef
     globalThis['@podium'] = null;
     bus = new MessageBus();
-    end();
 });
 
 tap.test('subscribe() - should be a function', t => {
