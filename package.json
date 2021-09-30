@@ -2,10 +2,10 @@
   "name": "@podium/browser",
   "version": "1.1.0",
   "type": "module",
-  "main": "./dist/cjs/src/index.js",
+  "main": "./dist/index.js",
   "exports": {
-    "import": "./dist/esm/src/index.js",
-    "require": "./dist/cjs/src/index.js"
+    "require": "./dist/index.js",
+    "import": "./src/index.js"
   },
   "license": "MIT",
   "keywords": [
@@ -30,13 +30,11 @@
   ],
   "types": "index.d.ts",
   "scripts": {
-    "prepublishOnly": "npm run build:clean && npm run build",
-    "build": "rollup --config",
-    "build:clean": "rimraf dist",
+    "prepublishOnly": "npm run build",
+    "build": "rollup -c",
     "test": "tap test/*.js",
     "lint": "eslint . --ignore-pattern '/dist/'",
-    "lint:fix": "eslint --fix . --ignore-pattern '/dist/'",
-    "precommit": "lint-staged"
+    "lint:fix": "eslint --fix . --ignore-pattern '/dist/'"
   },
   "dependencies": {
     "eventemitter3": "4.0.7"
@@ -52,20 +50,8 @@
     "eslint-config-prettier": "8.3.0",
     "eslint-plugin-import": "2.24.2",
     "eslint-plugin-prettier": "4.0.0",
-    "lint-staged": "11.1.2",
     "prettier": "2.4.1",
-    "rimraf": "3.0.2",
     "rollup": "2.57.0",
     "tap": "15.0.10"
-  },
-  "lint-staged": {
-    "*.js": [
-      "eslint --fix --config ./.eslintrc",
-      "git add"
-    ],
-    "{*.json,*.md,.eslintrc,.prettierrc}": [
-      "prettier --write",
-      "git add"
-    ]
   }
 }
