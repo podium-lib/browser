@@ -2,9 +2,9 @@
   "name": "@podium/browser",
   "version": "1.2.0",
   "type": "module",
-  "main": "./dist/index.js",
+  "main": "./dist/src/index.js",
   "exports": {
-    "require": "./dist/index.js",
+    "require": "./dist/src/index.js",
     "import": "./src/index.js"
   },
   "license": "MIT",
