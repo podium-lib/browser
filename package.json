@@ -52,6 +52,6 @@
     "eslint-plugin-prettier": "4.0.0",
     "prettier": "2.5.1",
     "rollup": "2.70.1",
-    "tap": "15.1.6"
+    "tap": "15.2.3"
   }
 }
