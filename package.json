@@ -49,8 +49,8 @@
     "eslint-config-airbnb-base": "14.2.1",
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-prettier": "4.0.0",
-    "prettier": "2.6.2",
+    "eslint-plugin-prettier": "4.2.1",
+    "prettier": "2.7.1",
     "rollup": "2.75.7",
     "tap": "15.2.3"
   }
