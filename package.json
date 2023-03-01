@@ -50,7 +50,7 @@
     "eslint-config-prettier": "8.6.0",
     "eslint-plugin-import": "2.27.5",
     "eslint-plugin-prettier": "4.2.1",
-    "prettier": "2.8.3",
+    "prettier": "2.8.4",
     "rollup": "2.79.1",
     "tap": "15.2.3"
   }
