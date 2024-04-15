@@ -5,37 +5,36 @@ let bus;
 
 tap.beforeEach(() => {
     // Need to clear the global between tests for a clean slate
-    // eslint-disable-next-line no-undef
     globalThis['@podium'] = null;
     bus = new MessageBus();
 });
 
-tap.test('subscribe() - should be a function', t => {
+tap.test('subscribe() - should be a function', (t) => {
     t.ok(typeof bus.subscribe === 'function');
     t.end();
 });
 
-tap.test('publish() - should be a function', t => {
+tap.test('publish() - should be a function', (t) => {
     t.ok(typeof bus.publish === 'function');
     t.end();
 });
 
-tap.test('publish() - should invoke subscribed listener', t => {
+tap.test('publish() - should invoke subscribed listener', (t) => {
     const payload = { a: 'b' };
-    bus.subscribe('foo', 'bar', event => {
+    bus.subscribe('foo', 'bar', (event) => {
         t.equal(event.payload, payload);
         t.end();
     });
     bus.publish('foo', 'bar', payload);
 });
 
-tap.test('unsubscribe() - should remove subscribed listener', t => {
+tap.test('unsubscribe() - should remove subscribed listener', (t) => {
     const channel = 'channel';
     const topic = 'topic';
 
     let cbCount = 0;
 
-    const callback = event => {
+    const callback = (event) => {
         t.equal(event.channel, channel);
         t.equal(event.topic, topic);
         cbCount += 1;
@@ -61,12 +60,12 @@ tap.test('unsubscribe() - should remove subscribed listener', t => {
     t.end();
 });
 
-tap.test('peek() - should initially be undefined', t => {
+tap.test('peek() - should initially be undefined', (t) => {
     t.ok(bus.peek('channel', 'topic') === undefined);
     t.end();
 });
 
-tap.test('peek() - should return latest event', t => {
+tap.test('peek() - should return latest event', (t) => {
     const channel = 'channel';
     const topic = 'topic';
 
@@ -78,12 +77,12 @@ tap.test('peek() - should return latest event', t => {
     t.end();
 });
 
-tap.test('log() - should initially be empty', t => {
+tap.test('log() - should initially be empty', (t) => {
     t.same(bus.log('channel', 'topic'), []);
     t.end();
 });
 
-tap.test('log() - should retrieve earlier events, newest first', t => {
+tap.test('log() - should retrieve earlier events, newest first', (t) => {
     const channel = 'channel';
     const topic = 'topic';
 
