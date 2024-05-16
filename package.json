@@ -3,7 +3,9 @@
   "version": "1.2.1",
   "type": "module",
   "main": "./dist/src/index.js",
+  "types": "./types/index.d.ts",
   "exports": {
+    "types": "./types/index.js",
     "require": "./dist/src/index.js",
     "import": "./src/index.js"
   },
@@ -26,15 +28,15 @@
   "files": [
     "dist",
     "src",
-    "index.d.ts"
+    "types"
   ],
-  "types": "index.d.ts",
   "scripts": {
     "prepublishOnly": "npm run build",
     "build": "rollup -c",
-    "test": "tap --disable-coverage --allow-empty-coverage test/*.js",
     "lint": "eslint . --ignore-pattern '/dist/'",
-    "lint:fix": "eslint --fix . --ignore-pattern '/dist/'"
+    "lint:fix": "eslint --fix . --ignore-pattern '/dist/'",
+    "test": "tap --disable-coverage --allow-empty-coverage test/*.js && tsc --project tsconfig.test.json",
+    "types": "tsc --declaration --emitDeclarationOnly"
   },
   "dependencies": {
     "eventemitter3": "4.0.7"
@@ -45,6 +47,12 @@
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-commonjs": "25.0.7",
     "@rollup/plugin-node-resolve": "15.2.3",
+    "@semantic-release/changelog": "6.0.3",
+    "@semantic-release/commit-analyzer": "12.0.0",
+    "@semantic-release/git": "10.0.1",
+    "@semantic-release/github": "10.0.3",
+    "@semantic-release/npm": "12.0.1",
+    "@semantic-release/release-notes-generator": "13.0.0",
     "eslint": "9.1.1",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.1.3",

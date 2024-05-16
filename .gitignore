@@ -1,3 +1,4 @@
+dist/
 coverage/
 .nyc_output/
 .idea/
@@ -14,3 +15,4 @@ tmp/**/*
 .idea/**/*
 coverage
 .tap/
+*.d.ts
