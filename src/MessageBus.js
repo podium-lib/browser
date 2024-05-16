@@ -20,11 +20,14 @@ function getGlobalObjects() {
     let objs = getGlobalThis()['@podium'];
     if (!objs) {
         objs = {};
-        objs.ee = new EventEmitter();
-        objs.sink = new Sink();
         getGlobalThis()['@podium'] = objs;
     }
-
+    if (!objs.ee) {
+        objs.ee = new EventEmitter();
+    }
+    if (!objs.sink) {
+        objs.sink = new Sink();
+    }
     return objs;
 }
 
