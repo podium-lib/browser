@@ -5,7 +5,7 @@
   "main": "./dist/src/index.js",
   "types": "./types/index.d.ts",
   "exports": {
-    "types": "./types/index.js",
+    "types": "./types/index.d.ts",
     "require": "./dist/src/index.js",
     "import": "./src/index.js"
   },
