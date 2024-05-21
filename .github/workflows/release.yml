@@ -45,6 +45,5 @@ jobs:
       - name: Release and publish
         run: npx semantic-release
         env:
-          ARTIFACTORY_NPM_SECRET: ${{ env.ARTIFACTORY_NPM_SECRET }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ env.ARTIFACTORY_NPM_SECRET }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
