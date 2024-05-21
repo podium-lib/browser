@@ -4,6 +4,10 @@ export default class Queue {
         this.array = [];
     }
 
+    /**
+     * @template T
+     * @param {T} item
+     */
     push(item) {
         // If we are out of room, get rid of the oldest element
         if (this.array.length >= this.maxSize) {
@@ -12,10 +16,18 @@ export default class Queue {
         this.array.unshift(item);
     }
 
+    /**
+     * @template T
+     * @returns {T}
+     */
     peek() {
         return this.array[0];
     }
 
+    /**
+     * @template T
+     * @returns {T[]}
+     */
     toArray() {
         return this.array.slice();
     }
