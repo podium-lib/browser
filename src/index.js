@@ -1,5 +1,6 @@
 /**
- * @typedef {import('./Event.js').default} Event
+ * @template [T=unknown]
+ * @typedef {import('./Event.js').default<T>} Event
  */
 /**
  * @template [T=unknown]
