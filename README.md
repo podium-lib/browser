@@ -40,6 +40,42 @@ messageBus.subscribe('search', 'query', (event) => {
 });
 ```
 
+### Read the most current state on startup
+
+When you start your application you should read the last message on a topic to make sure your app is working with the latest known state.
+
+You may want to store this in some kind of reactive state and use [`.subscribe`](#subscribechannel-topic-callback) to update that state.
+
+```js
+import { MessageBus } from '@podium/browser';
+import { map } from 'nanostores';
+
+// The messageBus reads from a global in-memory storage.
+// It can have available messages immediately after being constructed.
+const messageBus = new MessageBus();
+
+// Read the last message on a topic and fall back to a default
+const initial = messageBus.peek('system', 'authentication')?.payload || {
+    token: null,
+};
+
+// Example: set up a reactive state (using nanostores in this example)
+const $authentication = map(initial);
+
+// Update the reactive state on new messages
+messageBus.subscribe('system', 'authentication', (event) => {
+    $authentication.set({ ...event.payload, source: 'bus' });
+});
+
+// Trigger a message when writing to the state
+$authentication.listen(({ token, source }) => {
+    // We fire this only when the source of the change is the app, not the message bus.
+    if (source !== 'bus') {
+        messageBus.publish('system', 'authentication', { token });
+    }
+});
+```
+
 ## API
 
 ### MessageBus

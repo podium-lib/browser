@@ -1,6 +1,7 @@
 import tap from 'tap';
 import MessageBus from '../src/MessageBus.js';
 
+/** @type {MessageBus} */
 let bus;
 
 tap.beforeEach(() => {
