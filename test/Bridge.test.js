@@ -55,7 +55,7 @@ tap.test('bridge.on() - should invoke subscribed messagebus listener', (t) => {
     );
 });
 
-tap.test('unsubscribe() - should remove subscribed listener', (t) => {
+tap.test('bridge.unsubscribe() - should remove subscribed listener', (t) => {
     t.ok(
         globalThis.window['@podium'].bridge,
         'Expected the Podium bridge to be globally available',

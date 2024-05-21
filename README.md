@@ -1,9 +1,8 @@
 # @podium/browser
 
-This is a client-side library designed to:
+This is a client-side library designed to send and receive messages inside a podium application.
 
--   send and receive messages between different podlets in a layout.
--   send and receive messages between web and native in a webview.
+Supports application running in a web browser or in a web view as part of a native application.
 
 ## Usage
 
