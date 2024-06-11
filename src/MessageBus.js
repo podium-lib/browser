@@ -75,7 +75,7 @@ export default class MessageBus {
      * @template [T=unknown]
      * @param {string} channel
      * @param {string} topic
-     * @param {T} payload
+     * @param {T} [payload]
      * @returns {Event<T>} Returns the {@link Event} object passed to subscribers.
      */
     publish(channel, topic, payload) {
@@ -83,10 +83,23 @@ export default class MessageBus {
         this.ee.emit(event.toKey(), event);
         this.sink.push(event);
         if (this.bridge) {
+            /** @type {T | T[]} */
+            let params = payload;
+
+            if (typeof payload !== 'undefined') {
+                // JSON RPC 2.0 requires that params is either an object or an array. Wrap primitives in an an array.
+                const isPrimitive =
+                    typeof params === 'string' ||
+                    typeof params === 'boolean' ||
+                    typeof params === 'number';
+                if (isPrimitive) {
+                    params = [payload];
+                }
+            }
 
             this.bridge.notification({
                 method: `${channel}/${topic}`,
-                params:{"type":typeof payload, payload},
+                params,
             });
         }
         return event;
@@ -124,10 +137,10 @@ export default class MessageBus {
             const bridgeListener = (message) => {
                 const request =
                     /** @type {import("@podium/bridge").RpcRequest<T>} */ (
-                        message
-                    );
+                    message
+                );
 
-                const event = new Event(channel, topic, request.params.payload);
+                const event = new Event(channel, topic, request.params);
                 this.sink.push(event);
                 listener(event);
             };
