@@ -14,17 +14,20 @@ function getGlobalThis() {
 }
 
 /**
- * @returns {{ ee: EventEmitter; sink: Sink; }}
+ * @returns {{ ee: EventEmitter; sink: Sink; bridge?: import("@podium/bridge").PodiumBridge }}
  */
 function getGlobalObjects() {
     let objs = getGlobalThis()['@podium'];
     if (!objs) {
         objs = {};
-        objs.ee = new EventEmitter();
-        objs.sink = new Sink();
         getGlobalThis()['@podium'] = objs;
     }
-
+    if (!objs.ee) {
+        objs.ee = new EventEmitter();
+    }
+    if (!objs.sink) {
+        objs.sink = new Sink();
+    }
     return objs;
 }
 
@@ -35,9 +38,10 @@ function getGlobalObjects() {
 
 export default class MessageBus {
     constructor() {
-        const { ee, sink } = getGlobalObjects();
+        const { ee, sink, bridge } = getGlobalObjects();
         this.ee = ee;
         this.sink = sink;
+        this.bridge = bridge;
     }
 
     /**
@@ -78,8 +82,34 @@ export default class MessageBus {
         const event = new Event(channel, topic, payload);
         this.ee.emit(event.toKey(), event);
         this.sink.push(event);
+        if (this.bridge) {
+            /** @type {T | T[]} */
+            let params = payload;
+
+            if (typeof payload !== 'undefined') {
+                // JSON RPC 2.0 requires that params is either an object or an array. Wrap primitives in an an array.
+                const isPrimitive =
+                    typeof params === 'string' ||
+                    typeof params === 'boolean' ||
+                    typeof params === 'number';
+                if (isPrimitive) {
+                    params = [payload];
+                }
+            }
+
+            this.bridge.notification({
+                method: `${channel}/${topic}`,
+                params,
+            });
+        }
         return event;
     }
+
+    /**
+     * Saves a reference to the event handlers that wrap the API for @podium/bridge, so we can unsubscribe later.
+     * @type {Map<MessageHandler<any>, import('@podium/bridge').EventHandler<any>>}
+     */
+    #bridgeMap = new Map();
 
     /**
      * Subscribe to messages for a channel and topic.
@@ -98,6 +128,28 @@ export default class MessageBus {
      * ```
      */
     subscribe(channel, topic, listener) {
+        if (this.bridge) {
+            // If there's a bridge, add a listener for the channel and topic there
+            // and translate incoming messages to a @podium/browser Event for the
+            // same API surface in userland.
+
+            /** @type {import('@podium/bridge').EventHandler<T>} */
+            const bridgeListener = (message) => {
+                const request =
+                    /** @type {import("@podium/bridge").RpcRequest<T>} */ (
+                    message
+                );
+
+                const event = new Event(channel, topic, request.params);
+                this.sink.push(event);
+                listener(event);
+            };
+            this.bridge.on(`${channel}/${topic}`, bridgeListener);
+
+            // Save a reference to the bridgeListener so we can unsubscribe later.
+            this.#bridgeMap.set(listener, bridgeListener);
+        }
+
         this.ee.on(toKey(channel, topic), listener);
     }
 
@@ -123,5 +175,12 @@ export default class MessageBus {
      */
     unsubscribe(channel, topic, listener) {
         this.ee.off(toKey(channel, topic), listener);
+
+        if (this.bridge) {
+            const bridgeListener = this.#bridgeMap.get(listener);
+            if (bridgeListener) {
+                this.bridge.off(`${channel}/${topic}`, bridgeListener);
+            }
+        }
     }
 }

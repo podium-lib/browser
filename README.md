@@ -1,6 +1,9 @@
 # @podium/browser
 
-This is a client-side library designed to send and receive messages between different podlets in a layout.
+This is a client-side library designed to:
+
+-   send and receive messages between different podlets in a layout.
+-   send and receive messages between web and native in a webview.
 
 ## Usage
 
@@ -36,6 +39,36 @@ import { MessageBus } from '@podium/browser';
 const messageBus = new MessageBus();
 
 messageBus.subscribe('search', 'query', (event) => {
+    console.log(event.payload);
+});
+```
+
+### Send messages between web and native
+
+To send messages between web and native the [`@podium/bridge`](https://github.com/podium-lib/bridge) must be in the document. Typically you include this once in your layout so podlets can assume it's present.
+
+The API is similar as sending messages between podlets. This way you can notify both other podlets and any native code using the same API.
+
+```js
+import { MessageBus } from '@podium/browser';
+
+const messageBus = new MessageBus();
+
+// notify of a logout
+messageBus.publish('system', 'authentication', null);
+```
+
+The `channel` and `topic` parameters are combined to form the JSON RPC 2.0 `"method"` property. In the example above the channel `system` and topic `authentication` are combined to the method `"system/authentication"`.
+
+To listen to messages coming in from native:
+
+```js
+import { MessageBus } from '@podium/browser';
+
+const messageBus = new MessageBus();
+
+// listen to the `"system/authentication"` message coming from native
+messageBus.subscribe('system', 'authentication', (event) => {
     console.log(event.payload);
 });
 ```
