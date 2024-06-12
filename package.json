@@ -1,6 +1,6 @@
 {
   "name": "@podium/browser",
-  "version": "1.2.3",
+  "version": "1.3.0",
   "type": "module",
   "main": "./dist/src/index.js",
   "types": "./types/index.d.ts",
