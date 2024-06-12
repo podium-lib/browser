@@ -39,6 +39,7 @@
     "types": "tsc --declaration --emitDeclarationOnly"
   },
   "dependencies": {
+    "@podium/bridge": "^1.2.2",
     "eventemitter3": "4.0.7"
   },
   "devDependencies": {
