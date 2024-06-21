@@ -1,6 +1,6 @@
 # @podium/browser
 
-This is a client-side library designed to:
+This is a [Podium client-side communication library](https://podium-lib.io/docs/guides/client-side-communication) designed to:
 
 -   send and receive messages between different podlets in a layout.
 -   send and receive messages between web and native in a webview.
@@ -24,22 +24,30 @@ import Podium from '@podium/browser';
 Use the [MessageBus](#messagebus) to send messages between podlets in a layout.
 
 ```javascript
-// In podlet A. Broadcast a message.
+// input-podlet.js
 import { MessageBus } from '@podium/browser';
 
 const messageBus = new MessageBus();
 
-messageBus.publish('search', 'query', 'couch');
+messageBus.publish('reminders', 'newReminder', {
+    title: 'Buy milk',
+});
 ```
 
 ```js
-// In podlet B. Subscribe to a message.
+// list-podlet.js
 import { MessageBus } from '@podium/browser';
 
 const messageBus = new MessageBus();
 
-messageBus.subscribe('search', 'query', (event) => {
-    console.log(event.payload);
+// Check to see if an initial value exists on the messageBus
+// and fall back to a default value.
+const reminders = messageBus.peek('reminders', 'newReminder') || [];
+
+// ListPodlet listens for new reminders published on the message bus and updates its state
+messageBus.subscribe('reminders', 'newReminder', (event) => {
+    const reminder = event.payload;
+    reminders.push(reminder);
 });
 ```
 
@@ -106,6 +114,17 @@ messageBus.publish('search', 'query', 'laptop');
 messageBus.publish('auth', 'logout');
 ```
 
+#### `.peek(channel, topic)`
+
+Get the latest event for a channel and topic combination. Use this to set up your application's initial state if relevant – check for a value and fall back to a default.
+
+This method takes the following arguments:
+
+| option  | default | type     | required | details             |
+| ------- | ------- | -------- | -------- | ------------------- |
+| channel | `null`  | `string` | `true`   | Name of the channel |
+| topic   | `null`  | `string` | `true`   | Name of the topic   |
+
 #### `.subscribe(channel, topic, callback)`
 
 Subscribe to messages for a channel and topic combination.
@@ -149,17 +168,6 @@ messageBus.subscribe('channel', 'topic', cb);
 
 messageBus.unsubscribe('channel', 'topic', cb);
 ```
-
-#### `.peek(channel, topic)`
-
-Get the latest event for a channel and topic combination.
-
-This method takes the following arguments:
-
-| option  | default | type     | required | details             |
-| ------- | ------- | -------- | -------- | ------------------- |
-| channel | `null`  | `string` | `true`   | Name of the channel |
-| topic   | `null`  | `string` | `true`   | Name of the topic   |
 
 #### `.log(channel, topic)`
 
