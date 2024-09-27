@@ -25,7 +25,9 @@ tap.beforeEach(() => {
         bridge.destroy();
     }
 
+    // @ts-ignore
     globalThis.window['@podium'] = {};
+    // @ts-ignore
     globalThis.window['@podium'].bridge = new PodiumBridge();
     bus = new MessageBus();
 });

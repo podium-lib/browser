@@ -35,8 +35,8 @@
     "build": "rollup -c",
     "lint": "eslint . --ignore-pattern '/dist/'",
     "lint:fix": "eslint --fix . --ignore-pattern '/dist/'",
-    "test": "tap --disable-coverage --allow-empty-coverage test/*.js && tsc --project tsconfig.test.json",
-    "types": "tsc --declaration --emitDeclarationOnly"
+    "test": "tap --disable-coverage --allow-empty-coverage test/*.js",
+    "types": "tsc --declaration --emitDeclarationOnly && tsc --project tsconfig.test.json"
   },
   "dependencies": {
     "@podium/bridge": "^1.2.2",
@@ -45,6 +45,7 @@
   "devDependencies": {
     "@babel/core": "7.25.2",
     "@babel/preset-env": "7.25.3",
+    "@podium/eslint-config": "1.0.0",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-commonjs": "25.0.8",
     "@rollup/plugin-node-resolve": "15.2.3",
@@ -55,9 +56,6 @@
     "@semantic-release/npm": "12.0.1",
     "@semantic-release/release-notes-generator": "13.0.0",
     "eslint": "9.4.0",
-    "eslint-config-prettier": "9.1.0",
-    "eslint-plugin-prettier": "5.1.3",
-    "globals": "15.9.0",
     "jsdom": "24.1.1",
     "prettier": "3.2.5",
     "rollup": "4.22.4",

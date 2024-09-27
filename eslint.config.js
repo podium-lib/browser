@@ -1,20 +1,3 @@
-import prettierConfig from 'eslint-config-prettier';
-import prettierPlugin from 'eslint-plugin-prettier';
-import globals from 'globals';
-import js from '@eslint/js';
+import config from '@podium/eslint-config';
 
-export default [
-    js.configs.recommended,
-    prettierConfig,
-    {
-        plugins: {
-            prettier: prettierPlugin,
-        },
-        languageOptions: {
-            globals: {
-                ...globals.browser,
-                global: true,
-            },
-        },
-    },
-];
+export default config;

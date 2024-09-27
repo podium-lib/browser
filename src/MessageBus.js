@@ -137,8 +137,8 @@ export default class MessageBus {
             const bridgeListener = (message) => {
                 const request =
                     /** @type {import("@podium/bridge").RpcRequest<T>} */ (
-                    message
-                );
+                        message
+                    );
 
                 const event = new Event(channel, topic, request.params);
                 this.sink.push(event);
