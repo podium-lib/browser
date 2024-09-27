@@ -1,9 +1,4 @@
 {
-  "extends": "./tsconfig.json",
-  "include": ["./test/**/*.js"],
-  "compilerOptions": {
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "noEmit": true
-  }
+    "extends": "@podium/typescript-config/test.json",
+    "include": ["./test/**/*.js"]
 }

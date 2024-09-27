@@ -1,16 +1,7 @@
 {
-  "compilerOptions": {
-    "lib": ["es2020", "DOM"],
-    "module": "nodenext",
-    "target": "es2020",
-    "resolveJsonModule": true,
-    "checkJs": true,
-    "allowJs": true,
-    "moduleResolution": "nodenext",
-    "declaration": true,
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "outDir": "types"
-  },
-  "include": ["./src/**/*.js"]
+    "extends": "@podium/typescript-config/module.json",
+    "include": ["./src/**/*.js"],
+    "compilerOptions": {
+        "outDir": "types"
+    }
 }
