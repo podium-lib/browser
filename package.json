@@ -45,7 +45,7 @@
     "eventemitter3": "4.0.7"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.26.0",
+    "@babel/preset-env": "7.26.9",
     "@podium/eslint-config": "1.0.5",
     "@podium/semantic-release-config": "2.0.0",
     "@podium/typescript-config": "1.0.0",
