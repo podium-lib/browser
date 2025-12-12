@@ -42,7 +42,7 @@
   },
   "dependencies": {
     "@podium/bridge": "^1.2.2",
-    "eventemitter3": "4.0.7"
+    "eventemitter3": "5.0.1"
   },
   "devDependencies": {
     "@babel/preset-env": "7.28.5",
