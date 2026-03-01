@@ -56,7 +56,7 @@
     "jsdom": "27.3.0",
     "npm-run-all2": "8.0.4",
     "prettier": "3.8.1",
-    "rollup": "4.53.3",
+    "rollup": "4.59.0",
     "semantic-release": "25.0.3",
     "tap": "21.5.0"
   }
