@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "@babel/preset-env": "7.28.5",
-    "@podium/eslint-config": "1.0.21",
+    "@podium/eslint-config": "2.0.2",
     "@podium/semantic-release-config": "3.0.4",
     "@podium/typescript-config": "1.0.0",
     "@rollup/plugin-babel": "6.1.0",
