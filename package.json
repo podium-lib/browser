@@ -48,7 +48,7 @@
     "@babel/preset-env": "7.28.5",
     "@podium/eslint-config": "2.0.2",
     "@podium/semantic-release-config": "3.0.5",
-    "@podium/typescript-config": "1.0.0",
+    "@podium/typescript-config": "1.0.1",
     "@rollup/plugin-babel": "6.1.0",
     "@rollup/plugin-commonjs": "29.0.0",
     "@rollup/plugin-node-resolve": "16.0.3",
