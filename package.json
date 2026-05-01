@@ -50,7 +50,7 @@
     "@podium/semantic-release-config": "3.0.5",
     "@podium/typescript-config": "1.0.1",
     "@rollup/plugin-babel": "6.1.0",
-    "@rollup/plugin-commonjs": "29.0.0",
+    "@rollup/plugin-commonjs": "29.0.2",
     "@rollup/plugin-node-resolve": "16.0.3",
     "eslint": "9.39.2",
     "jsdom": "27.3.0",
